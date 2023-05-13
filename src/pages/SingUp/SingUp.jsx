@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 
-const Login = () => {
-  const handleLogin = (event) => {
+const SingUp = () => {
+  const handleSingUp = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    console.log(name, email, password);
   };
 
   return (
@@ -19,7 +20,13 @@ const Login = () => {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <h1 className="text-3xl font-bold text-center">Login now!</h1>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSingUp}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input type="text" name="email" placeholder="Enter Your Name" className="input input-bordered" />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Email</span>
@@ -38,13 +45,13 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input type="submit" className="btn btn-primary" value="Login" />
+                <input type="submit" className="btn btn-primary" value="Sing Up" />
               </div>
             </form>
             <p className="my-4 text-center">
-              New to Car Doctors?
-              <Link className="text-orange-600 font-bold" to="/signUp">
-                Sign Up
+              Already have an account?
+              <Link className="text-orange-600 font-bold" to="/login">
+                Login
               </Link>
             </p>
           </div>
@@ -54,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SingUp;
