@@ -11,8 +11,8 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="mt-4">
-      <div className="text-center">
+    <div className="py-10 bg-base-200">
+      <div className="text-center mb-5">
         <h3 className="text-2xl font-bold text-orange-600">Our Services</h3>
         <h2 className="text-5xl">Our Service Area</h2>
         <p>
