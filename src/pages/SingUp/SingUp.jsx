@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SingUp = () => {
+  const { createUser } = useContext(AuthContext);
   const handleSingUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -9,6 +12,13 @@ const SingUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -25,7 +35,7 @@ const SingUp = () => {
                 <label className="label">
                   <span className="label-text">Your Name</span>
                 </label>
-                <input type="text" name="email" placeholder="Enter Your Name" className="input input-bordered" />
+                <input type="text" name="name" placeholder="Enter Your Name" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
