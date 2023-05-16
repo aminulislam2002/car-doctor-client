@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SingUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const handleSingUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,9 +16,11 @@ const SingUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        updateUserProfile(result.user, name)
         console.log(user);
       })
       .catch((error) => console.log(error));
+
   };
 
   return (
